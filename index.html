@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HAPPY BIRTHDAY HOOMAN</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(to top right, #ffdde1, #fbb1bd);
+      overflow: hidden;
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      color: #702f4d;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 50px;
+      border-radius: 30px;
+      box-shadow: 0 0 35px rgba(255, 105, 180, 0.4);
+      z-index: 2;
+      position: relative;
+      max-width: 700px;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 3.8em;
+      color: #d6336c;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px #ffe6ed;
+    }
+
+    p {
+      font-size: 1.4em;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      color: #6e2f4c;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: #ff69b4;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+      transition: background 0.3s ease;
+    }
+
+    a.button:hover {
+      background-color: #e0559c;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ✨ Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff;
+      animation: sparkle 4s infinite ease-in-out;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-30px) scale(1.8);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-80px) scale(1);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>HAPPY BIRTHDAY HOOMAN</h1>
+    <p>
+      To my most precious person,<br>
+      I made this with all my heart just for you.<br>
+      I hope your day shines as brightly as your smile. 💗
+    </p>
+    <a href="love-letter.html" class="button">Read My Love Letter 💌</a>
+  </div>
+
+  <!-- ✨ Sparkles -->
+  <script>
+    function createSparkle() {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.top = Math.random() * 100 + "vh";
+      sparkle.style.animationDuration = 3 + Math.random() * 2 + "s";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 4000);
+    }
+    setInterval(createSparkle, 150);
+  </script>
+</body>
+</html>

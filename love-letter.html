@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Love Letter</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle, #fff0f5, #ffd6e8);
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #5a2a41;
+      text-align: center;
+    }
+
+    .top-heart {
+      font-size: 120px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px #ffb6c1;
+    }
+
+    .letter-box {
+      background: white;
+      padding: 40px;
+      max-width: 700px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+    }
+
+    .letter-box h2 {
+      font-size: 2.2em;
+      color: #c0396b;
+      margin-bottom: 20px;
+    }
+
+    .letter-box p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      color: #6d2e45;
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #ff6fa2;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #e75489;
+    }
+       /* ✨ Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff;
+      animation: sparkle 4s infinite ease-in-out;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-30px) scale(1.8);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-80px) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 💖 🎂 💖 -->
+  <div class="top-heart">💖🎂💖</div>
+
+  <div class="letter-box">
+    <h2>To My Dearest HOOMAN</h2>
+    <p>
+      Dear Hooman,<br><br>
+
+    
+     Everything that you did to me , make my life shine and happier. The smile, laugh, the attention and every effort you make for me is feels like I belong to you. I feel safe with you and every word that you said to me make me feel joy and love.<br><br>
+
+        Hooman,<br><br>
+     My heart still holds the memory of you. They way you saw me made everything else blur, as if I was the only heartbeat that mattered. Being together never be in my thought but whenever I am with you , I want to make you happy, be there for you when you need the most and I don't want to let go of you. It is all because I really fell in love with you. 💗<br><br>
+        
+     However, it feels like dream when you chose me to be by your side. I feel lucky to have someone like you, and yes you might feel disbelieve but this is what I want to share to you. I will try my best and I promise, I will trying to be the partner you deserve. You will always be the best boyfriend for me.<br><br>
+        
+     I admire you from a far. The way you care of your family, your kindness towards me and be patience when I am being stressful. Every time you did all that to me, it reminds me of how lucky I am to be in your life and you there for me by my side. Thank you Rinaldi, my boyfie.<br><br>
+        
+        Hooman,<br><br>
+     Growing old with you , together in one house after marry is my highest goul. However, I wonder what I did to deserve someone like you. But, you are the sweetest miracle I never thought I'd earn. I do wanna see us together in the future with our own family.<br><br> 
+
+      Happy Birthday, my love. May this year bring you everything your heart desires — and know that I’ll always be cheering for you, right beside you.<br><br>
+
+      With all my heart,<br>
+      — Your girl, FARAH 🌹
+    </p>
+
+  </div>
+
+  <a href="index.html" class="back-btn">← Back to Birthday Page</a>
+     <!-- ✨ Sparkles -->
+  <script>
+    function createSparkle() {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.top = Math.random() * 100 + "vh";
+      sparkle.style.animationDuration = 3 + Math.random() * 2 + "s";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 4000);
+    }
+    setInterval(createSparkle, 150);
+  </script>
+
+</body>
+</html>
