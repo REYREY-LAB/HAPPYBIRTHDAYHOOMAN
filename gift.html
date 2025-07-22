@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>A Gift Just for You</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle, #fff0f5, #ffd6e8);
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #5a2a41;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.2em;
+      color: #c0396b;
+      text-shadow: 0 0 10px #ffc0cb;
+    }
+
+    .gift-box {
+      width: 150px;
+      height: 150px;
+      background: url('giftbox.png') no-repeat center/cover;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gift-box:hover {
+      transform: scale(1.05);
+    }
+
+    .message {
+      display: none;
+      margin-top: 30px;
+      max-width: 600px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3);
+      text-align: center;
+      font-size: 1.2em;
+      line-height: 1.7;
+    }
+
+    .back-btn {
+      margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #ff6fa2;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #e75489;
+    }
+
+    /* 🎉 Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff6fa2;
+      animation: fall 3s linear infinite;
+      opacity: 0.8;
+      z-index: 999;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Click the gift, my love 🎁</h1>
+
+  <!-- 🎁 Gift Box -->
+  <div class="gift-box" onclick="openGift()"></div>
+
+  <!-- 💌 Hidden Message -->
+  <div class="message" id="finalMessage">
+    <p>
+      Surprise! 💕<br><br>
+      This little gift holds all my love, just for you.<br>
+      You’ve made my world brighter, happier, and full of love.<br>
+      There’s no one else I’d rather celebrate than you —<br>
+      the one who means the world to me 💗<br><br>
+      I love you so much, Rinaldi. Happy Birthday 🎂💖<br>
+      — Your girl, Farah 🌹
+    </p>
+  </div>
+
+  <a href="index.html" class="back-btn">← Back to Birthday Page</a>
+
+  <script>
+    function openGift() {
+      document.getElementById("finalMessage").style.display = "block";
+      createConfetti();
+    }
+
+    function createConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
+        confetti.style.backgroundColor = ['#ffc0cb', '#ff6fa2', '#f8a5c2'][Math.floor(Math.random() * 3)];
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+  </script>
+    <!-- 💖 Voice Message Section -->
+<div style="margin-top: 40px;">
+  <p style="font-size: 1.2em; color: #b03a63;">Here’s something I want you to hear... 🎧</p>
+  <audio id="voice" autoplay style="display: none;">
+    <source src="farah_voice.aac" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+    <script>
+  const voice = document.getElementById('voice');
+  voice.volume = 0;
+  voice.play().catch(() => {}); // Prevent autoplay error if blocked
+
+  let vol = 0;
+  const fade = setInterval(() => {
+    if (vol < 1) {
+      vol += 0.05;
+      voice.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 300);
+</script>
+
+</body>
+</html>
