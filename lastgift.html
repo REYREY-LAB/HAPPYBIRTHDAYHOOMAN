@@ -53,6 +53,33 @@
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
+       /* ✨ Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff;
+      animation: sparkle 4s infinite ease-in-out;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-30px) scale(1.8);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-80px) scale(1);
+      }
+    }
   </style>
 </head>
 <body>
@@ -96,6 +123,19 @@
         alert("Try again, love. You know this ❤️");
       }
     }
+  </script>
+     <!-- ✨ Sparkles -->
+  <script>
+    function createSparkle() {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.top = Math.random() * 100 + "vh";
+      sparkle.style.animationDuration = 3 + Math.random() * 2 + "s";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 4000);
+    }
+    setInterval(createSparkle, 150);
   </script>
 
 </body>
