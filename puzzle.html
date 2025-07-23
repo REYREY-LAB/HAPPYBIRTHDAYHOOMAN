@@ -91,16 +91,52 @@
   </style>
 </head>
 <body>
+    
   <h1>Can You Unscramble My Heart?</h1>
   <p>Hint: It's what I feel for you 💖</p>
   <p style="color:#ff4081;">Scrambled: "iueyo lsw lva wlyolil"</p>
 
-  <input type="text" id="answer" placeholder="Type the correct sentence..." />
-  <br>
-  <button onclick="checkAnswer()">Submit</button>
+  <!-- Question Input + Submit -->
+<div style="text-align: center; margin-top: 50px;">
+  <input type="text" id="finalAnswer" placeholder="Type your answer..." style="
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    width: 250px;
+  ">
+  <button onclick="checkFinalAnswer()" style="
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #f06292;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+  ">
+    Submit
+  </button>
+</div>
+
+<!-- Hidden Button -->
+<div id="lastGiftBtnContainer" style="display: none; text-align: center; margin-top: 30px;">
+  <button onclick="window.location.href='lastgift.html'" style="
+    background-color: #ff69b4;
+    color: white;
+    padding: 14px 28px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  ">
+    🎁 Open Your Last Present
+  </button>
+</div>
 
   <div id="result">🎉 You're my genius! Here some kiss, MWAAAA 💕</div>
-
+  
   <div class="hearts" id="hearts"></div>
 
   <audio id="bgmusic" autoplay loop>
@@ -132,6 +168,17 @@
       }
     }
   </script>
-    
+    <script>
+  function checkFinalAnswer() {
+    const input = document.getElementById("finalAnswer").value.trim().toLowerCase();
+    const correct = "i will always love you";
+    if (input === correct) {
+      document.getElementById("lastGiftBtnContainer").style.display = "block";
+    } else {
+      alert("Try again, love 💌");
+    }
+  }
+</script>
+
 </body>
 </html>

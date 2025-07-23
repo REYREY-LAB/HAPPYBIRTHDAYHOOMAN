@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Last Gift</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe6f2, #ffd1dc);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #d63384;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 70%;
+      max-width: 300px;
+      border: 2px solid #ff99cc;
+      border-radius: 10px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    #myPic, #finalBtn {
+      display: none;
+      margin-top: 30px;
+    }
+
+    #myPic {
+      max-width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>This is my last gift for you 🎁</h1>
+  <p>But first, answer this one last thing...</p>
+
+  <p><strong>What is my favorite nickname you gave me? 🥰</strong></p>
+  <input type="text" id="finalAnswer" placeholder="Type your answer here..." />
+  <br><br>
+  <button onclick="checkFinal()">Submit</button>
+
+ <!-- Your picture (centered using flexbox) -->
+<div id="myPicContainer" style="
+  display: none;
+  justify-content: center;
+  margin-top: 30px;
+">
+  <img id="myPic" src="your-picture.jpeg" alt="Me" style="
+    max-width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  ">
+</div>
+  <!-- Final present button -->
+  <div>
+    <button id="finalBtn" onclick="window.location.href='finalpresent.html'">
+      💌 Open Your Last Present
+    </button>
+  </div>
+
+  <script>
+    const finalCorrectAnswer = "beby"; // change to your answer!
+
+    function checkFinal() {
+      const answer = document.getElementById("finalAnswer").value.trim().toLowerCase();
+      if (answer === finalCorrectAnswer) {
+        document.getElementById("myPic").style.display = "block";
+        document.getElementById("finalBtn").style.display = "inline-block";
+      } else {
+        alert("Try again, love. You know this ❤️");
+      }
+    }
+  </script>
+
+</body>
+</html>
