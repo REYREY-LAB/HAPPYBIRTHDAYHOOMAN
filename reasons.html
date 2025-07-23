@@ -107,8 +107,7 @@
   </div>
 
   <a href="index.html" class="back-btn">← Back to Birthday Page</a>
-    <a href="gift.html" class="love-btn">🎁 A Gift Just for You</a>
-
+   
   <script>
     // Fade in cards when scrolling
     const cards = document.querySelectorAll('.reason-card');
@@ -127,5 +126,42 @@
       observer.observe(card);
     });
   </script>
+    <style>
+  .gift-button {
+    background-color: #ffcce5;
+    color: #d63384;
+    border: 2px solid #ff99cc;
+    padding: 15px 25px;
+    font-size: 1em;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(255, 153, 204, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: bounce 2s infinite;
+  }
+
+  .gift-button:hover {
+    background-color: #ffb3d9;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 105, 180, 0.4);
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+</style>
+
+<div style="text-align:center; margin-top: 50px;">
+  <button class="gift-button" onclick="window.location.href='gift.html'">
+    🎁 A Gift Just for You
+  </button>
+</div>
+
 </body>
 </html>
