@@ -5,62 +5,83 @@
   <title>My Last Gift</title>
   <style>
     body {
-      background: linear-gradient(135deg, #ffe6f2, #ffd1dc);
-      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe6fa, #ffcde3);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
-      padding: 50px;
-      color: #d63384;
+      padding: 60px 20px;
+      color: #d12e7e;
+      overflow-x: hidden;
     }
 
     h1 {
-      font-size: 2em;
-    }
-
-    p {
-      font-size: 1.2em;
+      font-size: 2.8em;
       margin-bottom: 20px;
     }
 
+    p {
+      font-size: 1.5em;
+      margin-bottom: 25px;
+    }
+
     input[type="text"] {
-      padding: 10px;
-      width: 70%;
-      max-width: 300px;
-      border: 2px solid #ff99cc;
-      border-radius: 10px;
-      font-size: 1em;
+      padding: 14px;
+      width: 80%;
+      max-width: 400px;
+      border: 3px solid #ffaad4;
+      border-radius: 25px;
+      font-size: 1.2em;
       text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     button {
-      padding: 12px 24px;
+      padding: 16px 32px;
       background-color: #ff69b4;
       color: white;
       border: none;
-      border-radius: 30px;
-      font-size: 1em;
+      border-radius: 40px;
+      font-size: 1.3em;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
       margin-top: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #ff85c1;
+      transform: scale(1.05);
     }
 
     #myPic, #finalBtn {
       display: none;
-      margin-top: 30px;
+      margin-top: 40px;
     }
 
     #myPic {
-      max-width: 250px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      max-width: 280px;
+      border-radius: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
-       /* ✨ Sparkles */
+
+    #finalBtn {
+      background-color: #ff85c1;
+      border-radius: 40px;
+      font-size: 1.3em;
+      padding: 14px 28px;
+    }
+
+    #finalBtn:hover {
+      background-color: #ffa7d6;
+    }
+
+    /* ✨ Sparkles */
     .sparkle {
       position: absolute;
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       background: white;
       border-radius: 50%;
-      box-shadow: 0 0 10px #fff;
+      box-shadow: 0 0 12px #fff;
       animation: sparkle 4s infinite ease-in-out;
       z-index: 1;
       opacity: 0.6;
@@ -84,47 +105,51 @@
 </head>
 <body>
 
-  <h1>This is my last gift for you 🎁</h1>
+  <h1>💝 This is my last gift for you 🎁</h1>
   <p>But first, answer this one last thing...</p>
+  <p><strong>What is my favorite nickname you gave me? 🥺</strong></p>
 
-  <p><strong>What is my favorite nickname you gave me? 🥰</strong></p>
-  <input type="text" id="finalAnswer" placeholder="Type your answer here..." />
+  <input type="text" id="finalAnswer" placeholder="Type it here, love..." />
   <br><br>
-  <button onclick="checkFinal()">Submit</button>
+  <button onclick="checkFinal()">💌 Submit</button>
 
- <!-- Your picture (centered using flexbox) -->
-<div id="myPicContainer" style="
-  display: none;
-  justify-content: center;
-  margin-top: 30px;
-">
-  <img id="myPic" src="your-picture.jpeg" alt="Me" style="
-    max-width: 250px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  ">
-</div>
+  <!-- Your picture (centered using flexbox) -->
+  <div id="myPicContainer" style="display: none; justify-content: center; margin-top: 30px;">
+    <img id="myPic" src="your-picture.jpeg" alt="Me">
+  </div>
+
   <!-- Final present button -->
   <div>
     <button id="finalBtn" onclick="window.location.href='finalpresent.html'">
-      💌 Open Your Last Present
+      🎁 Open Your Last Surprise
     </button>
   </div>
 
+  <!-- Background Music (autoplay after correct answer) -->
+  <audio id="bgMusic" loop style="display: none;">
+    <source src="your-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <script>
-    const finalCorrectAnswer = "beby"; // change to your answer!
+    const finalCorrectAnswer = "beby"; // Replace with your correct nickname
 
     function checkFinal() {
       const answer = document.getElementById("finalAnswer").value.trim().toLowerCase();
       if (answer === finalCorrectAnswer) {
         document.getElementById("myPic").style.display = "block";
         document.getElementById("finalBtn").style.display = "inline-block";
+
+        // 🎶 Play background music
+        const music = document.getElementById("bgMusic");
+        music.play().catch(() => {});
       } else {
         alert("Try again, love. You know this ❤️");
       }
     }
   </script>
-     <!-- ✨ Sparkles -->
+
+  <!-- ✨ Sparkles -->
   <script>
     function createSparkle() {
       const sparkle = document.createElement("div");
