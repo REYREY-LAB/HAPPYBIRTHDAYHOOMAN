@@ -15,65 +15,57 @@
       justify-content: center;
       min-height: 100vh;
       color: #5a2a41;
-      overflow: hidden;
+      overflow-y: auto;
+
     }
 
     h1 {
-      margin-bottom: 20px;
-      font-size: 2.2em;
+      margin-bottom: 30px;
+      font-size: 3em;
       color: #c0396b;
-      text-shadow: 0 0 10px #ffc0cb;
+      text-shadow: 0 0 12px #ffc0cb;
     }
 
     .gift-box {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       background: url('giftbox.png') no-repeat center/cover;
       cursor: pointer;
       transition: transform 0.3s ease;
+      animation: shake 1.5s infinite;
     }
 
-    .gift-box:hover {
-      transform: scale(1.05);
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
     }
 
     .message {
       display: none;
-      margin-top: 30px;
-      max-width: 1000px;
-      padding: 20px;
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3);
-      text-align: center;
-      font-size: 1.2em;
-      line-height: 1.7;
-    }
-
-    .back-btn {
       margin-top: 40px;
-      padding: 12px 24px;
-      background-color: #ff6fa2;
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: background 0.3s;
+      max-width: 1000px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 25px;
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
+      text-align: center;
+      font-size: 1.5em;
+      line-height: 2;
     }
 
-    .back-btn:hover {
-      background-color: #e75489;
+    .confetti, .heart {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      opacity: 0.9;
+      z-index: 999;
     }
 
     .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
       background-color: #ff6fa2;
+      border-radius: 50%;
       animation: fall 3s linear infinite;
-      opacity: 0.8;
-      z-index: 999;
     }
 
     @keyframes fall {
@@ -90,21 +82,22 @@
     }
 
     .surprise-button {
-      margin-top: 30px;
-      padding: 12px 24px;
+      margin-top: 35px;
+      padding: 16px 32px;
       background: linear-gradient(145deg, #ff8ecf, #ff5ca8);
       color: white;
       border: none;
-      border-radius: 30px;
-      font-size: 1em;
+      border-radius: 35px;
+      font-size: 1.4em;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
-      transition: background 0.3s ease;
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .surprise-button:hover {
       background: linear-gradient(145deg, #ff5ca8, #ff8ecf);
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -129,7 +122,7 @@
   </div>
 
   <!-- 🔊 Hidden Voice -->
-  <audio id="voice" style="display: none;">
+  <audio id="voice">
     <source src="farah_voice.aac" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -141,20 +134,19 @@
     </button>
   </div>
 
- 
   <script>
     function openGift() {
-      // Show message
+      // Show message and button
       document.getElementById("finalMessage").style.display = "block";
-      // Show the surprise button
       document.getElementById("surpriseBtn").style.display = "block";
-      // Play confetti
+
+      // Play confetti 
       createConfetti();
+
       // Play voice
       const voice = document.getElementById('voice');
       voice.volume = 0;
-      voice.play().catch(() => {}); // handle autoplay block
-
+      voice.play().catch(() => {}); // Fix autoplay blocking
       let vol = 0;
       const fade = setInterval(() => {
         if (vol < 1) {
@@ -167,7 +159,7 @@
     }
 
     function createConfetti() {
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 80; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
         confetti.style.left = Math.random() * 100 + 'vw';
