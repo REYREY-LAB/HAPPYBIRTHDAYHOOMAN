@@ -66,7 +66,6 @@
       background-color: #e75489;
     }
 
-    /* 🎉 Confetti */
     .confetti {
       position: absolute;
       width: 10px;
@@ -84,6 +83,28 @@
       100% {
         transform: translateY(100vh) rotate(360deg);
       }
+    }
+
+    #surpriseBtn {
+      display: none;
+    }
+
+    .surprise-button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: linear-gradient(145deg, #ff8ecf, #ff5ca8);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .surprise-button:hover {
+      background: linear-gradient(145deg, #ff5ca8, #ff8ecf);
     }
   </style>
 </head>
@@ -107,13 +128,42 @@
     </p>
   </div>
 
-  <a href="index.html" class="back-btn">← Back to Birthday Page</a>
-       
+  <!-- 🔊 Hidden Voice -->
+  <audio id="voice" style="display: none;">
+    <source src="farah_voice.aac" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
+  <!-- 🎁 One Last Surprise Button -->
+  <div id="surpriseBtn">
+    <button onclick="window.location.href='puzzle.html'" class="surprise-button">
+      🎁 One Last Surprise...
+    </button>
+  </div>
+
+ 
   <script>
     function openGift() {
+      // Show message
       document.getElementById("finalMessage").style.display = "block";
+      // Show the surprise button
+      document.getElementById("surpriseBtn").style.display = "block";
+      // Play confetti
       createConfetti();
+      // Play voice
+      const voice = document.getElementById('voice');
+      voice.volume = 0;
+      voice.play().catch(() => {}); // handle autoplay block
+
+      let vol = 0;
+      const fade = setInterval(() => {
+        if (vol < 1) {
+          vol += 0.05;
+          voice.volume = vol;
+        } else {
+          clearInterval(fade);
+        }
+      }, 300);
     }
 
     function createConfetti() {
@@ -124,47 +174,9 @@
         confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
         confetti.style.backgroundColor = ['#ffc0cb', '#ff6fa2', '#f8a5c2'][Math.floor(Math.random() * 3)];
         document.body.appendChild(confetti);
-
         setTimeout(() => confetti.remove(), 5000);
       }
     }
   </script>
-    <!-- 💖 Voice Message Section -->
-<div style="margin-top: 40px;">
-  <p style="font-size: 1.2em; color: #b03a63;">Here’s something I want you to hear... 🎧</p>
-  <audio id="voice" autoplay style="display: none;">
-    <source src="farah_voice.aac" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
-    <script>
-  const voice = document.getElementById('voice');
-  voice.volume = 0;
-  voice.play().catch(() => {}); // Prevent autoplay error if blocked
-
-  let vol = 0;
-  const fade = setInterval(() => {
-    if (vol < 1) {
-      vol += 0.05;
-      voice.volume = vol;
-    } else {
-      clearInterval(fade);
-    }
-  }, 300);
-</script>
-     <button onclick="window.location.href='puzzle.html'" style="
-  margin-top: 30px;
-  padding: 12px 24px;
-  background-color: #ff69b4;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  font-size: 1em;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-">
-  🎁 One Last Surprise...
-</button>
-   
 </body>
 </html>
