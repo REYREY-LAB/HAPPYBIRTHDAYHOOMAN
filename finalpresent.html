@@ -116,6 +116,36 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+      .next-button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 14px 28px;
+  font-size: 1.2em;
+  color: white;
+  background: linear-gradient(to right, #ff69b4, #ff85c1);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+  transition: transform 0.2s ease;
+  animation: bounce 2s infinite;
+}
+
+.next-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #ff85c1, #ff69b4);
+}
+
+/* optional cute bounce */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
 
   </style>
 </head>
@@ -172,26 +202,28 @@
       setTimeout(() => petal.remove(), 10000);
     }, 500);
   </script>
-<audio id="myAudio" autoplay>
+    
+<audio id="bgMusic" autoplay loop>
   <source src="romantic.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
-<div style="margin-top: 50px;">
-  <button onclick="window.location.href='index.html'" style="
-    padding: 14px 30px;
-    background-color: #ff85a2;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.2em;
-    font-family: 'Segoe UI', sans-serif;
-    cursor: pointer;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease;
-  ">
-    ⬅ Back to Main Page
-  </button>
-</div>
 
+<script>
+  const audio = document.getElementById("bgMusic");
+
+  // Try play on load (may be blocked)
+  window.addEventListener("DOMContentLoaded", () => {
+    audio.play().catch(() => {
+      // If autoplay blocked, wait for user click
+      document.body.addEventListener("click", () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
+</script>
+
+
+
+    <a href="video.html" class="next-button">🎥 Watch the Final Surprise</a>
 </body>
 </html>
