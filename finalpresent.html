@@ -95,6 +95,28 @@
         opacity: 0;
       }
     }
+       a.button {
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: #ff69b4;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+      transition: background 0.3s ease;
+    }
+
+    a.button:hover {
+      background-color: #e0559c;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
   </style>
 </head>
 <body>
@@ -154,6 +176,22 @@
   <source src="romantic.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
+<div style="margin-top: 50px;">
+  <button onclick="window.location.href='index.html'" style="
+    padding: 14px 30px;
+    background-color: #ff85a2;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-family: 'Segoe UI', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+  ">
+    ⬅ Back to Main Page
+  </button>
+</div>
 
 </body>
 </html>
