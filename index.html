@@ -10,17 +10,26 @@
       box-sizing: border-box;
     }
 
-    body {
-      height: 100vh;
-      background: linear-gradient(to top right, #ffdde1, #fbb1bd);
-      overflow: hidden;
+   body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffcccc, #ff4d4d, #990000);
+      background-size: 200% 200%;
+      animation: gradientMove 10s ease infinite;
       font-family: 'Georgia', serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #4d0000;
       text-align: center;
-      position: relative;
-      color: #702f4d;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .card {
